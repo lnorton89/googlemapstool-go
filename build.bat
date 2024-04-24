@@ -1,1 +1,1 @@
-fyne package -icon window.ico main.go
+fyne package -icon window.ico -exe builds/mapstool.exe main.go

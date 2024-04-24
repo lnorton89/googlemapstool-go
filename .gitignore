@@ -1,1 +1,53 @@
-*.exe
+# Build artifacts
+*.a
+*.o
+*.so [Uu]nused$
+
+# Dependency lock files
+**/vendor/
+
+# IDE and editor files
+[Tt]mp/
+[Ii]de/*
+*.swo
+
+# Coverage reports
+coverage.txt
+
+# Release metadata
+*.release
+
+# Test output
+**/[Tt]est.out
+**/[Tt]est.log
+**/[Bb]enchmark.out
+
+# Temporary test data
+**/[Tt]emp/[Tt]*
+
+# OS X specific
+[Dd]esktop.ini
+
+# Emacs temporary files
+*~
+
+# Local environmental configuration
+.env*
+.env.local
+.env.development
+.env.test
+.env.production
+
+# Sensitive data
+secrets.json
+*.key
+
+# Go modules virtual cache
+**/go.mod
+**/go.sum
+
+# Example log file
+*.log
+
+# Ignore all Go source files ending with _test.go 
+*.go_test
