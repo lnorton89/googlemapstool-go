@@ -1,0 +1,1 @@
+fyne package -icon window.ico main.go
