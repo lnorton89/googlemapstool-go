@@ -1,25 +1,22 @@
 package data
 
 import (
+	"bytes"
+	_ "embed"
 	"encoding/csv"
 	"fmt"
 	"io"
-	"os"
 )
+
+//go:embed data.csv
+var csvData []byte
 
 type AppData struct {
 	Destinations []string
 }
 
-func LoadData(filePath string) *AppData {
-	file, err := os.Open(filePath)
-	if err != nil {
-		fmt.Println("Error opening CSV file:", err)
-		return nil
-	}
-	defer file.Close()
-
-	reader := csv.NewReader(file)
+func LoadData() *AppData {
+	reader := csv.NewReader(bytes.NewReader(csvData))
 	var records [][]string
 	for {
 		record, err := reader.Read()

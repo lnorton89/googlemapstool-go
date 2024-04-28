@@ -29,7 +29,7 @@ func main() {
 	w := a.NewWindow(window.Name)
 	w.Resize(fyne.NewSize(window.Width, window.Height))
 
-	appData := data.LoadData("data.csv")
+	appData := data.LoadData()
 	if appData == nil {
 		utils.ShowErrorDialog("Failed to load data from CSV")
 		return
