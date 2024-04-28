@@ -1,21 +1,21 @@
 package main
 
 import (
-	"fmt"
-	"os/exec"
-	"runtime"
-	"strings"
+	"mapscreator/src/browser"
+	"mapscreator/src/data"
+	"mapscreator/src/utils"
 
 	"fyne.io/fyne/v2"
 	"fyne.io/fyne/v2/app"
 	"fyne.io/fyne/v2/container"
+	"fyne.io/fyne/v2/theme"
 	"fyne.io/fyne/v2/widget"
 )
 
 type Window struct {
 	Name   string
-	Width  int
-	Height int
+	Width  float32
+	Height float32
 }
 
 func main() {
@@ -27,8 +27,13 @@ func main() {
 
 	a := app.New()
 	w := a.NewWindow(window.Name)
-	w.Resize(fyne.NewSize(float32(window.Width), float32(window.Height)))
-	w.Icon()
+	w.Resize(fyne.NewSize(window.Width, window.Height))
+
+	appData := data.LoadData("data.csv")
+	if appData == nil {
+		utils.ShowErrorDialog("Failed to load data from CSV")
+		return
+	}
 
 	hello := widget.NewLabel("While Google Maps only allows up to 10 destinations, this tool lets you generate routes with more!")
 	hello2 := widget.NewLabel("Simply enter your desired destinations below, each on a separate line. Click the button, and we'll create a Google Maps link with your route.")
@@ -38,47 +43,33 @@ func main() {
 	input.SetMinRowsVisible(25)
 
 	submit := widget.NewButton("Generate Link", func() {
-		openBrowser(processString(input.Text))
+		browser.OpenBrowser(utils.ReplaceSpace(input.Text))
 	})
 	submit.Importance = widget.SuccessImportance
 
-	w.SetContent(container.NewVBox(
-		hello,
-		hello2,
-		input,
-		submit,
-	))
+	list := widget.NewList(
+		func() int {
+			return len(appData.Destinations)
+		},
+		func() fyne.CanvasObject {
+			return widget.NewLabel("template")
+		},
+		func(i widget.ListItemID, o fyne.CanvasObject) {
+			o.(*widget.Label).SetText(appData.Destinations[i])
+		})
 
+	tabs := container.NewAppTabs(
+		container.NewTabItemWithIcon("Home", theme.HomeIcon(), container.NewVBox(
+			hello,
+			hello2,
+			input,
+			submit,
+		)),
+		container.NewTabItemWithIcon("Destinations", theme.HistoryIcon(), container.NewVBox(
+			list,
+		)),
+	)
+
+	w.SetContent(tabs)
 	w.ShowAndRun()
-}
-
-func openBrowser(addresses string) {
-	url := "https://www.google.com/maps/dir/" + addresses
-	var err error
-	switch runtime.GOOS {
-	case "linux", "darwin":
-		err = exec.Command("open", url).Start()
-	case "windows":
-		err = exec.Command("cmd", "/c", "start", url).Start()
-	default:
-		err = fmt.Errorf("unsupported platform: %s", runtime.GOOS)
-	}
-	if err != nil {
-		fmt.Println("Error opening browser:", err)
-	}
-}
-
-func processString(text string) string {
-	lines := strings.Split(text, "\n")
-	processed := strings.Join(replaceSpace(lines), "/")
-
-	return processed
-}
-
-func replaceSpace(lines []string) []string {
-	for i, line := range lines {
-		lines[i] = strings.ReplaceAll(line, " ", "+")
-	}
-
-	return lines
 }
