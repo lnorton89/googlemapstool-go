@@ -1,10 +1,9 @@
 package main
 
 import (
-	"mapscreator/src/views"
+	"mapscreator/src/components"
 )
 
 func main() {
-	window := views.NewWindow()
-	window.ShowAndRun()
+	components.NewWindow("Google Maps Route Tool", 900, 600).ShowAndRun()
 }

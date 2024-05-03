@@ -6,35 +6,36 @@ import (
 	"encoding/csv"
 	"fmt"
 	"io"
+	"mapscreator/src/utils"
 )
 
 //go:embed data.csv
 var csvData []byte
 
-type AppData struct {
+type DestinationsData struct {
 	Destinations []string
 }
 
-func Load() *AppData {
-	reader := csv.NewReader(bytes.NewReader(csvData))
+func Load() *DestinationsData {
 	var records [][]string
+	var destinations []string
+
 	for {
-		record, err := reader.Read()
+		record, err := csv.NewReader(bytes.NewReader(csvData)).Read()
 		if err == io.EOF {
 			break
 		}
 		if err != nil {
-			fmt.Println("Error reading CSV record:", err)
+			utils.ShowErrorDialog(string(fmt.Sprintf("%s%v", "Error loading data: }", err)))
 			return nil
 		}
+
 		records = append(records, record)
 	}
 
-	// Flatten the slice of slices into a single slice
-	var destinations []string
 	for _, record := range records {
 		destinations = append(destinations, record...)
 	}
 
-	return &AppData{Destinations: destinations}
+	return &DestinationsData{Destinations: destinations}
 }
