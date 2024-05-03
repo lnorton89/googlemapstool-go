@@ -16,18 +16,16 @@ func Destinations() *fyne.Container {
 		utils.ShowErrorDialog("Failed to load data from CSV")
 	}
 
-	list := widget.NewList(
-		func() int {
-			return len(appData.Destinations)
-		},
-		func() fyne.CanvasObject {
-			return widget.NewLabel("template")
-		},
-		func(i widget.ListItemID, o fyne.CanvasObject) {
-			o.(*widget.Label).SetText(appData.Destinations[i])
-		})
-
 	return container.NewStack(
-		list,
+		widget.NewList(
+			func() int {
+				return len(appData.Destinations)
+			},
+			func() fyne.CanvasObject {
+				return widget.NewLabel("template")
+			},
+			func(i widget.ListItemID, o fyne.CanvasObject) {
+				o.(*widget.Label).SetText(appData.Destinations[i])
+			}),
 	)
 }
