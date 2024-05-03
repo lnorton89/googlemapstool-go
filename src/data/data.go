@@ -19,9 +19,10 @@ type DestinationsData struct {
 func Load() *DestinationsData {
 	var records [][]string
 	var destinations []string
+	reader := csv.NewReader(bytes.NewReader(csvData))
 
 	for {
-		record, err := csv.NewReader(bytes.NewReader(csvData)).Read()
+		record, err := reader.Read()
 		if err == io.EOF {
 			break
 		}

@@ -27,7 +27,7 @@ func Destinations() *fyne.Container {
 			o.(*widget.Label).SetText(appData.Destinations[i])
 		})
 
-	return container.NewVBox(
+	return container.NewStack(
 		list,
 	)
 }
