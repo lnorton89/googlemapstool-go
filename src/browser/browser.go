@@ -6,7 +6,7 @@ import (
 	"runtime"
 )
 
-func OpenBrowser(addresses string) {
+func Open(addresses string) {
 	url := "https://www.google.com/maps/dir/" + addresses
 	var err error
 	switch runtime.GOOS {

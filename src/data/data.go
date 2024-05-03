@@ -15,7 +15,7 @@ type AppData struct {
 	Destinations []string
 }
 
-func LoadData() *AppData {
+func Load() *AppData {
 	reader := csv.NewReader(bytes.NewReader(csvData))
 	var records [][]string
 	for {
