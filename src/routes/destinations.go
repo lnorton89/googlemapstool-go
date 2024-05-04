@@ -24,10 +24,7 @@ func RefreshData() {
 }
 
 func Destinations() fyne.CanvasObject {
-	database := data.OpenDatabaseConnection(utils.AppSettings().DatabasePath)
-	destinations := data.ListDestinations(database)
-
-	viewModel.Destinations.Set(destinations)
+	RefreshData()
 
 	bindingList := widget.NewListWithData(
 		viewModel.Destinations,
