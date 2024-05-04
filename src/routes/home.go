@@ -9,6 +9,7 @@ import (
 	"fyne.io/fyne/v2/widget"
 )
 
+// Displays Home Route
 func Home() *fyne.Container {
 	description := container.NewVBox(
 		widget.NewLabel("While Google Maps only allows up to 10 destinations, this tool lets you generate routes with more!"),
@@ -23,6 +24,8 @@ func Home() *fyne.Container {
 	submit := widget.NewButton("Generate Link", func() {
 		utils.OpenBrowser(utils.ReplaceSpace(input.Text))
 		data.ParseMultiLineEntryAndInsert(input, utils.AppSettings().DatabasePath)
+		input.SetText("")
+		RefreshData()
 	})
 	submit.Importance = widget.SuccessImportance
 

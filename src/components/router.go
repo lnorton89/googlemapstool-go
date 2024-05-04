@@ -8,12 +8,15 @@ import (
 )
 
 func Router() *container.AppTabs {
+	HomeTab := container.NewTabItemWithIcon("Home", theme.HomeIcon(), container.NewVBox(
+		routes.Home(),
+	))
+	DestinationsTab := container.NewTabItemWithIcon("Destinations", theme.HistoryIcon(), container.NewStack(
+		routes.Destinations(),
+	))
+
 	return container.NewAppTabs(
-		container.NewTabItemWithIcon("Home", theme.HomeIcon(), container.NewVBox(
-			routes.Home(),
-		)),
-		container.NewTabItemWithIcon("Destinations", theme.HistoryIcon(), container.NewStack(
-			routes.Destinations(),
-		)),
+		HomeTab,
+		DestinationsTab,
 	)
 }
