@@ -2,6 +2,7 @@ package data
 
 import (
 	"fmt"
+	"mapscreator/src/utils"
 	"strings"
 
 	"fyne.io/fyne/v2/widget"
@@ -11,27 +12,21 @@ import (
 // ParseMultiLineEntryAndInsert parses a fyne.NewMultiLineEntry widget into a slice of strings for each line
 // and inserts each line as a new entry in the "destinations" table of the SQLite database.
 func ParseMultiLineEntryAndInsert(entry *widget.Entry, dbPath string) error {
-	if entry.Text == "" {
-		return fmt.Errorf("empty")
-	}
-
-	// Retrieve lines from the multi-line entry
-	lines := strings.Split(entry.Text, "\n")
-
-	// Open the SQLite database
 	db := OpenDatabaseConnection(dbPath)
 	defer db.Close()
 
-	// Prepare the SQL statement for insertion
 	stmt, err := db.Prepare("INSERT INTO destinations(address) VALUES(?)")
 	if err != nil {
+		utils.ShowErrorDialog(string(fmt.Sprintf("%s%v", "Error pinging database: }", err)))
+
 		return fmt.Errorf("error preparing statement: %v", err)
 	}
 	defer stmt.Close()
 
-	// Insert each line as a new entry in the "destinations" table
-	for _, line := range lines {
+	for _, line := range strings.Split(entry.Text, "\n") {
 		if _, err := stmt.Exec(line); err != nil {
+			utils.ShowErrorDialog(string(fmt.Sprintf("%s%v", "Error pinging database: }", err)))
+
 			return fmt.Errorf("error executing statement: %v", err)
 		}
 	}

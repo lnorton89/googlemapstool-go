@@ -28,6 +28,15 @@ func Home() *fyne.Container {
 		RefreshData()
 	})
 	submit.Importance = widget.SuccessImportance
+	submit.Disable()
+
+	input.OnChanged = func(text string) {
+		if len(text) > 0 {
+			submit.Enable()
+		} else {
+			submit.Disable()
+		}
+	}
 
 	return container.NewVBox(
 		description,
