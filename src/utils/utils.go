@@ -10,6 +10,16 @@ import (
 	"fyne.io/fyne/v2/dialog"
 )
 
+type Settings struct {
+	DatabasePath string
+}
+
+func AppSettings() *Settings {
+	return &Settings{
+		DatabasePath: "data.db",
+	}
+}
+
 var App fyne.Window
 
 func AppInstance(Instance fyne.Window) {

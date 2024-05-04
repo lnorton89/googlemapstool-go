@@ -1,7 +1,6 @@
 package components
 
 import (
-	"mapscreator/src/routes"
 	"mapscreator/src/utils"
 
 	"fyne.io/fyne/v2"
@@ -26,6 +25,6 @@ func NewWindow(title string, width float32, height float32) *Window {
 }
 
 func (w *Window) ShowAndRun() {
-	w.win.SetContent(routes.Router())
+	w.win.SetContent(Router())
 	w.win.ShowAndRun()
 }

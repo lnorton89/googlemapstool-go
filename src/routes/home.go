@@ -1,6 +1,7 @@
 package routes
 
 import (
+	"mapscreator/src/data"
 	"mapscreator/src/utils"
 
 	"fyne.io/fyne/v2"
@@ -21,6 +22,7 @@ func Home() *fyne.Container {
 
 	submit := widget.NewButton("Generate Link", func() {
 		utils.OpenBrowser(utils.ReplaceSpace(input.Text))
+		data.ParseMultiLineEntryAndInsert(input, utils.AppSettings().DatabasePath)
 	})
 	submit.Importance = widget.SuccessImportance
 

@@ -10,22 +10,19 @@ import (
 )
 
 func Destinations() *fyne.Container {
-	appData := data.Load()
-
-	if appData == nil {
-		utils.ShowErrorDialog("Failed to load data from CSV")
-	}
+	database := data.OpenDatabaseConnection(utils.AppSettings().DatabasePath)
+	destinations := data.ListDestinations(database)
 
 	return container.NewStack(
 		widget.NewList(
 			func() int {
-				return len(appData.Destinations)
+				return len(destinations)
 			},
 			func() fyne.CanvasObject {
 				return widget.NewLabel("template")
 			},
 			func(i widget.ListItemID, o fyne.CanvasObject) {
-				o.(*widget.Label).SetText(appData.Destinations[i])
+				o.(*widget.Label).SetText(destinations[i])
 			}),
 	)
 }

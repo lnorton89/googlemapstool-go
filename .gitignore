@@ -51,3 +51,6 @@ secrets.json
 
 # Ignore all Go source files ending with _test.go 
 *.go_test
+
+# Ignore database
+*data.db
