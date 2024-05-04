@@ -5,5 +5,5 @@ import (
 )
 
 func main() {
-	components.NewWindow("Google Maps Route Tool", 1000, 600).ShowAndRun()
+	components.NewWindow("Google Maps Route Tool", 1280, 600).ShowAndRun()
 }
