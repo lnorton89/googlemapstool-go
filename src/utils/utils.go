@@ -10,6 +10,8 @@ import (
 	"fyne.io/fyne/v2/dialog"
 )
 
+var App fyne.Window
+
 type Settings struct {
 	DatabasePath string
 }
@@ -19,8 +21,6 @@ func AppSettings() *Settings {
 		DatabasePath: "data.db",
 	}
 }
-
-var App fyne.Window
 
 func AppInstance(Instance fyne.Window) {
 	App = Instance
