@@ -42,9 +42,9 @@ func OpenBrowser(addresses string) {
 	case "linux", "darwin":
 		err = exec.Command("open", url).Start()
 	case "windows":
-		err = exec.Command("cmd", "/c", "start", url).Start()
+		err = exec.Command("cmd", "/C", "start", url).Start()
 	default:
-		err = fmt.Errorf("unsupported platform: %s", runtime.GOOS)
+		ShowErrorDialog(string(fmt.Sprintf("%s%v", "APP ERROR: unsupported platform - ", runtime.GOOS)))
 	}
 	if err != nil {
 		ShowErrorDialog(string(fmt.Sprintf("%s%v", "APP ERROR: ", err)))
