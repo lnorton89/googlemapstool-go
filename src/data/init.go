@@ -18,7 +18,7 @@ func InitDB(dbPath string) {
 		address TEXT UNIQUE
 	)`)
 	if err != nil {
-		utils.ShowErrorDialog(string(fmt.Sprintf("%s%v", "Error creating table: }", err)))
+		utils.ShowErrorDialog(string(fmt.Sprintf("%s%v", "DATABASE ERROR: ", err)))
 	}
 
 	db.Close()

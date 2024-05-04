@@ -47,6 +47,6 @@ func OpenBrowser(addresses string) {
 		err = fmt.Errorf("unsupported platform: %s", runtime.GOOS)
 	}
 	if err != nil {
-		ShowErrorDialog(string(fmt.Sprintf("%s%v", "Error opening browser: }", err)))
+		ShowErrorDialog(string(fmt.Sprintf("%s%v", "APP ERROR: ", err)))
 	}
 }

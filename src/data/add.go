@@ -17,7 +17,7 @@ func ParseMultiLineEntryAndInsert(entry *widget.Entry, dbPath string) error {
 
 	stmt, err := db.Prepare("INSERT INTO destinations(address) VALUES(?)")
 	if err != nil {
-		utils.ShowErrorDialog(string(fmt.Sprintf("%s%v", "Error pinging database: }", err)))
+		utils.ShowErrorDialog(string(fmt.Sprintf("%s%v", "DATABASE ERROR: ", err)))
 
 		return fmt.Errorf("error preparing statement: %v", err)
 	}
@@ -25,7 +25,7 @@ func ParseMultiLineEntryAndInsert(entry *widget.Entry, dbPath string) error {
 
 	for _, line := range strings.Split(entry.Text, "\n") {
 		if _, err := stmt.Exec(line); err != nil {
-			utils.ShowErrorDialog(string(fmt.Sprintf("%s%v", "Error pinging database: }", err)))
+			utils.ShowErrorDialog(string(fmt.Sprintf("%s%v", "DATABASE ERROR: ", err)))
 
 			return fmt.Errorf("error executing statement: %v", err)
 		}
