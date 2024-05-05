@@ -14,7 +14,7 @@ import (
 // and inserts each line as a new entry in the "destinations" table of the SQLite database.
 func ParseMultiLineEntryAndInsert(entry *widget.Entry, dbPath string) error {
 	var lines = strings.Split(entry.Text, "\n")
-	db := OpenDatabaseConnection(dbPath)
+	db := OpenDB(dbPath)
 	defer db.Close()
 
 	stmt, err := db.Prepare("INSERT INTO destinations(address) VALUES(?)")

@@ -20,7 +20,7 @@ var viewModel = &DestinationsViewModel{
 }
 
 func RefreshData() {
-	destinations := data.ListDestinations(data.OpenDatabaseConnection(utils.AppSettings().DatabasePath))
+	destinations := data.ListDestinations(data.OpenDB(utils.AppSettings().DatabasePath))
 	viewModel.Destinations.Set(destinations)
 }
 
