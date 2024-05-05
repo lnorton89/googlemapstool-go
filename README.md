@@ -1,5 +1,7 @@
 ## Info 
-While Google Maps only allows up to 10 destinations, this tool lets you generate routes with more! Written in Go for Windows. 
+While Google Maps only allows up to 10 destinations, this tool lets you generate routes with more! 
+
+Written in Go for Windows, may compile for Linux.
 
 ## Builds
 You can find Windows build in the `/build` folder. 
