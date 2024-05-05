@@ -15,7 +15,7 @@ type Window struct {
 
 func NewWindow() *Window {
 	var settings = utils.AppSettings()
-	data.InitDB(settings.DatabasePath)
+	data.InitDB()
 	app := app.New()
 	win := app.NewWindow(settings.WindowTitle)
 	win.Resize(fyne.NewSize(settings.Width, settings.Height))

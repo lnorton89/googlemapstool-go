@@ -8,7 +8,7 @@ import (
 
 func OpenBrowser(addresses string) {
 	var err error
-	url := "https://www.google.com/maps/dir/" + addresses
+	url := "https://www.google.com/maps/dir/" + FormatDestinationsInput(addresses)
 
 	switch runtime.GOOS {
 	case "linux", "darwin":

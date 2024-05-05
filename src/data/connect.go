@@ -7,8 +7,8 @@ import (
 )
 
 // OpenDB opens a connection to the SQLite database specified by dbPath.
-func OpenDB(dbPath string) *sql.DB {
-	db, err := sql.Open("sqlite3", dbPath)
+func OpenDB() *sql.DB {
+	db, err := sql.Open("sqlite3", DB_PATH)
 	if err != nil {
 		utils.ShowErrorDialog("DATABASE ERROR", err)
 	}

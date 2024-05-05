@@ -12,9 +12,9 @@ import (
 
 // ParseMultiLineEntryAndInsert parses a fyne.NewMultiLineEntry widget into a slice of strings for each line
 // and inserts each line as a new entry in the "destinations" table of the SQLite database.
-func ParseMultiLineEntryAndInsert(entry *widget.Entry, dbPath string) error {
+func ParseMultiLineEntryAndInsert(entry *widget.Entry) error {
 	var lines = strings.Split(entry.Text, "\n")
-	db := OpenDB(dbPath)
+	db := OpenDB()
 	defer db.Close()
 
 	stmt, err := db.Prepare("INSERT INTO destinations(address) VALUES(?)")

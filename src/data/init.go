@@ -9,10 +9,13 @@ import (
 	_ "github.com/mattn/go-sqlite3"
 )
 
+var DB_PATH = utils.AppSettings().DatabasePath
+
 // InitDB initates a SQLite database in the location specified by dbPath.
-func CreateDB(dbPath string) {
+func CreateDB() {
 	var err error
-	db := OpenDB(dbPath)
+	db := OpenDB()
+
 	_, err = db.Exec(`CREATE TABLE IF NOT EXISTS destinations (
 		id INTEGER PRIMARY KEY,
 		address TEXT UNIQUE
@@ -24,8 +27,9 @@ func CreateDB(dbPath string) {
 	db.Close()
 }
 
-func InitDB(dbPath string) {
-	f, err := os.Open(dbPath)
+func InitDB() {
+	f, err := os.Open(DB_PATH)
+
 	defer func() {
 		if f != nil {
 			f.Close()
@@ -35,7 +39,7 @@ func InitDB(dbPath string) {
 	if err != nil {
 		if os.IsNotExist(err) {
 			fmt.Println("File does not exist")
-			CreateDB(dbPath)
+			CreateDB()
 		} else {
 			fmt.Println("Error opening file:", err)
 		}

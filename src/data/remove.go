@@ -5,7 +5,7 @@ import (
 )
 
 // RemoveEntry removes an entry in the "destinations" table of the SQLite database.
-func RemoveEntry(dbPath string) error {
+func RemoveEntry() error {
 	// remove entry
 
 	return nil

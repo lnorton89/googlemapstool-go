@@ -2,7 +2,6 @@ package routes
 
 import (
 	"mapscreator/src/data"
-	"mapscreator/src/utils"
 
 	"fmt"
 
@@ -20,7 +19,7 @@ var viewModel = &DestinationsViewModel{
 }
 
 func ReloadDestinations() {
-	destinations := data.ListDestinations(data.OpenDB(utils.AppSettings().DatabasePath))
+	destinations := data.ListDestinations(data.OpenDB())
 	viewModel.Destinations.Set(destinations)
 }
 
