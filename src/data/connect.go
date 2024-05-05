@@ -6,6 +6,8 @@ import (
 	"database/sql"
 )
 
+var DB_PATH = utils.AppSettings().DatabasePath
+
 // OpenDB opens a connection to the SQLite database specified by dbPath.
 func OpenDB() *sql.DB {
 	db, err := sql.Open("sqlite3", DB_PATH)

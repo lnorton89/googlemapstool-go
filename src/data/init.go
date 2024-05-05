@@ -9,8 +9,6 @@ import (
 	_ "github.com/mattn/go-sqlite3"
 )
 
-var DB_PATH = utils.AppSettings().DatabasePath
-
 // InitDB initates a SQLite database in the location specified by dbPath.
 func CreateDB() {
 	var err error
