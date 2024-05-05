@@ -5,5 +5,5 @@ import (
 )
 
 func ReplaceSpace(text string) string {
-	return strings.ReplaceAll(strings.TrimSpace(text), "\n", "+")
+	return strings.ReplaceAll(strings.TrimSpace(text), "\n", "/")
 }

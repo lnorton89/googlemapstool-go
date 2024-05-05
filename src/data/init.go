@@ -3,8 +3,6 @@ package data
 import (
 	"mapscreator/src/utils"
 
-	"fmt"
-
 	_ "github.com/mattn/go-sqlite3"
 )
 
@@ -18,7 +16,7 @@ func InitDB(dbPath string) {
 		address TEXT UNIQUE
 	)`)
 	if err != nil {
-		utils.ShowErrorDialog(string(fmt.Sprintf("%s%v", "DATABASE ERROR: ", err)))
+		utils.ShowErrorDialog("DATABASE ERROR", err)
 	}
 
 	db.Close()
