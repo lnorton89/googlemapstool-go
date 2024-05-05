@@ -10,6 +10,6 @@ Use `build.bat` on Windows to use `fyne package` or just use `go build .` to bui
 ### Tech 
 Built with:
 
-- [Go 1.22.0](https://go.dev/)
-- [Fyne.io v2.4.5](fyne.io/fyne/v2)
-- [go-sqlite3 v1.14.22](github.com/mattn/go-sqlite3)
+- [`go` 1.22.0](https://go.dev/)
+- [`fyne.io` v2.4.5](https://fyne.io/fyne/v2)
+- [`go-sqlite3` v1.14.22](https://github.com/mattn/go-sqlite3)
