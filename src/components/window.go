@@ -12,11 +12,12 @@ type Window struct {
 	win fyne.Window
 }
 
-func NewWindow(title string, width float32, height float32) *Window {
+func NewWindow() *Window {
+	var settings = utils.AppSettings()
 	app := app.New()
-	win := app.NewWindow(title)
-	win.Resize(fyne.NewSize(width, height))
-	utils.AppInstance(win)
+	win := app.NewWindow(settings.WindowTitle)
+	win.Resize(fyne.NewSize(settings.Width, settings.Height))
+	settings.SetApp(win)
 
 	return &Window{
 		app: app,

@@ -4,35 +4,7 @@ import (
 	"fmt"
 	"os/exec"
 	"runtime"
-	"strings"
-
-	"fyne.io/fyne/v2"
-	"fyne.io/fyne/v2/dialog"
 )
-
-var App fyne.Window
-
-type Settings struct {
-	DatabasePath string
-}
-
-func AppSettings() *Settings {
-	return &Settings{
-		DatabasePath: "data.db",
-	}
-}
-
-func AppInstance(Instance fyne.Window) {
-	App = Instance
-}
-
-func ReplaceSpace(text string) string {
-	return strings.ReplaceAll(strings.TrimSpace(text), " ", "+")
-}
-
-func ShowErrorDialog(message string) {
-	dialog.NewInformation("Error", message, App).Show()
-}
 
 func OpenBrowser(addresses string) {
 	var err error
