@@ -1,7 +1,11 @@
 package utils
 
-import "strings"
+import (
+	"fmt"
+	"strings"
+)
 
 func ReplaceSpace(text string) string {
-	return strings.ReplaceAll(strings.TrimSpace(text), " ", "+")
+	fmt.Println((strings.ReplaceAll(strings.TrimSpace(text), "\n", "+")))
+	return strings.ReplaceAll(strings.TrimSpace(text), "\n", "+")
 }
