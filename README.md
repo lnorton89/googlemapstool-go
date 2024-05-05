@@ -7,9 +7,9 @@ You can find Windows build in the `/build` folder.
 ## Build Locally
 Use `build.bat` on Windows to use `fyne package` or just use `go build .` to build. 
 
-### Tech 
+## Tech 
 Built with:
 
-- [`go` 1.22.0](https://go.dev/)
-- [`fyne.io` v2.4.5](https://fyne.io/fyne/v2)
-- [`go-sqlite3` v1.14.22](https://github.com/mattn/go-sqlite3)
+- [`go`](https://github.com/golang/go) `1.22.0`
+- [`fyne`](https://github.com/fyne-io/fyne) `2.4.5`
+- [`go-sqlite3`](https://github.com/mattn/go-sqlite3) `1.14.22`
