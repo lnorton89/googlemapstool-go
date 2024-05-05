@@ -25,7 +25,7 @@ func Home() *fyne.Container {
 		utils.OpenBrowser(utils.FormatDestinationsInput(input.Text))
 		data.ParseMultiLineEntryAndInsert(input, utils.AppSettings().DatabasePath)
 		input.SetText("")
-		RefreshData()
+		ReloadDestinations()
 	})
 	submit.Importance = widget.SuccessImportance
 	submit.Disable()

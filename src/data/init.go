@@ -1,8 +1,9 @@
 package data
 
 import (
-	"fmt"
 	"mapscreator/src/utils"
+
+	"fmt"
 	"os"
 
 	_ "github.com/mattn/go-sqlite3"
@@ -23,8 +24,7 @@ func CreateDB(dbPath string) {
 	db.Close()
 }
 
-func InitDB() {
-	var dbPath = utils.AppSettings().DatabasePath
+func InitDB(dbPath string) {
 	f, err := os.Open(dbPath)
 	defer func() {
 		if f != nil {

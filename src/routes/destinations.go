@@ -19,13 +19,13 @@ var viewModel = &DestinationsViewModel{
 	Destinations: binding.NewStringList(),
 }
 
-func RefreshData() {
+func ReloadDestinations() {
 	destinations := data.ListDestinations(data.OpenDB(utils.AppSettings().DatabasePath))
 	viewModel.Destinations.Set(destinations)
 }
 
 func Destinations() fyne.CanvasObject {
-	RefreshData()
+	ReloadDestinations()
 
 	bindingList := widget.NewListWithData(
 		viewModel.Destinations,
