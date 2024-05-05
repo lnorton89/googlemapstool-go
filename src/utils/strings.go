@@ -5,5 +5,9 @@ import (
 )
 
 func FormatDestinationsInput(text string) string {
-	return strings.ReplaceAll(strings.TrimSpace(text), "\n", "/")
+	text = strings.ReplaceAll(strings.TrimSpace(text), " ", "+")
+	text = strings.ReplaceAll(strings.TrimSpace(text), ",", "")
+	text = strings.ReplaceAll(strings.TrimSpace(text), "\n", "/")
+
+	return text
 }
