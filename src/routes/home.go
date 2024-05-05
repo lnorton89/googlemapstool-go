@@ -22,7 +22,7 @@ func Home() *fyne.Container {
 	input.SetMinRowsVisible(25)
 
 	submit := widget.NewButton("Generate Link", func() {
-		utils.OpenBrowser(utils.ReplaceSpace(input.Text))
+		utils.OpenBrowser(utils.FormatDestinationsInput(input.Text))
 		data.ParseMultiLineEntryAndInsert(input, utils.AppSettings().DatabasePath)
 		input.SetText("")
 		RefreshData()

@@ -4,6 +4,6 @@ import (
 	"strings"
 )
 
-func ReplaceSpace(text string) string {
+func FormatDestinationsInput(text string) string {
 	return strings.ReplaceAll(strings.TrimSpace(text), "\n", "/")
 }
