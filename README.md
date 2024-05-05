@@ -1,3 +1,5 @@
+# `googlemapstool-go`
+
 ## Info 
 While Google Maps only allows up to 10 destinations, this tool lets you generate routes with more! 
 
