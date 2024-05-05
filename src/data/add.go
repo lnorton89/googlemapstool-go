@@ -1,8 +1,9 @@
 package data
 
 import (
-	"fmt"
 	"mapscreator/src/utils"
+
+	"fmt"
 	"strings"
 
 	"fyne.io/fyne/v2/widget"

@@ -1,9 +1,10 @@
 package routes
 
 import (
-	"fmt"
 	"mapscreator/src/data"
 	"mapscreator/src/utils"
+
+	"fmt"
 
 	"fyne.io/fyne/v2"
 	"fyne.io/fyne/v2/data/binding"
