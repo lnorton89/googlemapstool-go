@@ -10,9 +10,9 @@ import (
 	_ "github.com/mattn/go-sqlite3"
 )
 
-// ParseMultiLineEntryAndInsert parses a fyne.NewMultiLineEntry widget into a slice of strings for each line
+// AddEntry parses a fyne.NewMultiLineEntry widget into a slice of strings for each line
 // and inserts each line as a new entry in the "destinations" table of the SQLite database.
-func ParseMultiLineEntryAndInsert(entry *widget.Entry) error {
+func AddEntry(entry *widget.Entry) error {
 	var lines = strings.Split(entry.Text, "\n")
 	db := OpenDB()
 	defer db.Close()

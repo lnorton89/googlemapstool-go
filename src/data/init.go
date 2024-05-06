@@ -9,7 +9,7 @@ import (
 	_ "github.com/mattn/go-sqlite3"
 )
 
-// InitDB initates a SQLite database in the location specified by dbPath.
+// CreateDB creates a SQLite database.
 func CreateDB() {
 	var err error
 	db := OpenDB()
@@ -25,6 +25,8 @@ func CreateDB() {
 	db.Close()
 }
 
+// InitDB checks if an SQLite database exists.
+// If no SQLite database exists call CreateDB()
 func InitDB() {
 	f, err := os.Open(DB_PATH)
 

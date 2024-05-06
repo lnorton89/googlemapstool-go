@@ -23,7 +23,7 @@ func Home() *fyne.Container {
 
 	submit := widget.NewButton("Generate Link", func() {
 		utils.OpenBrowser(input.Text)
-		data.ParseMultiLineEntryAndInsert(input)
+		data.AddEntry(input)
 		input.SetText("")
 		ReloadDestinations()
 	})
